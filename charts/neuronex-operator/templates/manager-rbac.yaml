@@ -1,0 +1,51 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: {{ include "neuronex-operator.fullname" . }}-manager-role
+  labels:
+  {{- include "neuronex-operator.labels" . | nindent 4 }}
+rules:
+- apiGroups:
+  - neuronex.emqx.io
+  resources:
+  - neuronexes
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - neuronex.emqx.io
+  resources:
+  - neuronexes/finalizers
+  verbs:
+  - update
+- apiGroups:
+  - neuronex.emqx.io
+  resources:
+  - neuronexes/status
+  verbs:
+  - get
+  - patch
+  - update
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: {{ include "neuronex-operator.fullname" . }}-manager-rolebinding
+  labels:
+    app.kubernetes.io/component: rbac
+    app.kubernetes.io/created-by: neuronex-operator
+    app.kubernetes.io/part-of: neuronex-operator
+  {{- include "neuronex-operator.labels" . | nindent 4 }}
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: '{{ include "neuronex-operator.fullname" . }}-manager-role'
+subjects:
+- kind: ServiceAccount
+  name: '{{ include "neuronex-operator.fullname" . }}-controller-manager'
+  namespace: '{{ .Release.Namespace }}'
