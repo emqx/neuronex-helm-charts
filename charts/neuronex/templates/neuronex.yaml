@@ -1,0 +1,79 @@
+apiVersion: neuronex.emqx.io/v1alpha1
+kind: NeuronEX
+metadata:
+  name: {{ include "neuronex.fullname" . }}
+  labels:
+    {{- include "neuronex.labels" . | nindent 4 }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+  imagePullPolicy: {{ .Values.image.pullPolicy }}
+  {{- if .Values.imagePullSecrets }}
+  imagePullSecrets: {{ .Values.imagePullSecrets }}
+  {{- end }}
+  {{- if .Values.env }}
+  env: {{ .Values.env }}
+  {{- end }}
+  {{- if .Values.resources }}
+  resources: {{ .Values.resources }}
+  {{- end }}
+  {{- if .Values.initContainers }}
+  initContainers: {{ .Values.initContainers }}
+  {{- end }}
+  {{- if .Values.externalInitContainers }}
+  externalInitContainers: {{ .Values.externalInitContainers }}
+  {{- end }}
+  {{- if .Values.affinity }}
+  affinity: {{ .Values.affinity }}
+  {{- end }}
+  {{- if .Values.tolerations }}
+  tolerations: {{ .Values.tolerations }}
+  {{- end }}
+  {{- if .Values.nodeSelector }}
+  nodeSelector: {{ .Values.nodeSelector }}
+  {{- end }}
+  {{- if .Values.nodeName }}
+  nodeName: {{ .Values.nodeName }}
+  {{- end }}
+
+  {{- if .Values.livenessProbe }}
+  livenessProbe: {{ .Values.livenessProbe }}
+  {{- end }}
+  {{- if .Values.readinessProbe }}
+  readinessProbe: {{ .Values.readinessProbe }}
+  {{- end }}
+  {{- if .Values.startupProbe }}
+  startupProbe: {{ .Values.startupProbe }}
+  {{- end }}
+
+  {{- if not .Values.auth.enabled }}
+  disableAuth: true
+  {{- end }}
+  {{- if .Values.auth.jwt }}
+  jwt:{{ .Values.auth.jwt | toYaml | nindent 2 }}
+  {{- end }}
+
+  {{- if .Values.storageClass.enabled }}
+  {{- with .Values.storageClass }}
+  {{- if .name }}
+  storageClassName: {{ .name }}
+  {{- end }}
+  {{- if .accessMode }}
+  volumeClaimAccessModes: {{ .accessModes }}
+  {{- end }}
+  {{- if .size }}
+  volumeSize: {{ .size }}
+  {{- end }}
+  {{- end }}
+  {{- end }}
+
+  {{- if .Values.podSecurityContext }}
+  securityContext: {{ .Values.podSecurityContext | toYaml | nindent 2 }}
+  {{- end }}
+  {{- if .Values.securityContext }}
+  containerSecurityContext: {{ .Values.securityContext | toYaml | nindent 2 }}
+  {{- end }}
+
+  {{- if .Values.services }}
+  services: {{ .Values.services | toYaml | nindent 2 }}
+  {{- end }}

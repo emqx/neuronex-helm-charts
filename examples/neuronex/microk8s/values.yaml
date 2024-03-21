@@ -1,0 +1,3 @@
+storageClass:
+  enabled: true
+  name: "microk8s-hostpath"
