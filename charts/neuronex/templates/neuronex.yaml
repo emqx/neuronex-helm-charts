@@ -12,45 +12,45 @@ spec:
   imagePullSecrets: {{ .Values.imagePullSecrets }}
   {{- end }}
   {{- if .Values.env }}
-  env: {{ .Values.env }}
+  env: {{- toYaml .Values.env | nindent 2 }}
   {{- end }}
   {{- if .Values.resources }}
-  resources: {{ .Values.resources }}
+  resources: {{-  toYaml .Values.resources | nindent 2 }}
   {{- end }}
   {{- if .Values.initContainers }}
-  initContainers: {{ .Values.initContainers }}
+  initContainers: {{- toYaml .Values.initContainers | nindent 2 }}
   {{- end }}
   {{- if .Values.externalInitContainers }}
-  externalInitContainers: {{ .Values.externalInitContainers }}
+  externalInitContainers: {{- toYaml .Values.externalInitContainers | nindent 2 }}
   {{- end }}
   {{- if .Values.affinity }}
-  affinity: {{ .Values.affinity }}
+  affinity: {{- toYaml  .Values.affinity | nindent 2 }}
   {{- end }}
   {{- if .Values.tolerations }}
-  tolerations: {{ .Values.tolerations }}
+  tolerations: {{- toYaml  .Values.tolerations | nindent 2 }}
   {{- end }}
   {{- if .Values.nodeSelector }}
-  nodeSelector: {{ .Values.nodeSelector }}
+  nodeSelector: {{- toYaml  .Values.nodeSelector | nindent 2 }}
   {{- end }}
   {{- if .Values.nodeName }}
   nodeName: {{ .Values.nodeName }}
   {{- end }}
 
   {{- if .Values.livenessProbe }}
-  livenessProbe: {{ .Values.livenessProbe }}
+  livenessProbe: {{- toYaml .Values.livenessProbe | nindent 2 }}
   {{- end }}
   {{- if .Values.readinessProbe }}
-  readinessProbe: {{ .Values.readinessProbe }}
+  readinessProbe: {{- toYaml .Values.readinessProbe | nindent 2 }}
   {{- end }}
   {{- if .Values.startupProbe }}
-  startupProbe: {{ .Values.startupProbe }}
+  startupProbe: {{- toYaml .Values.startupProbe | nindent 2 }}
   {{- end }}
 
   {{- if not .Values.auth.enabled }}
   disableAuth: true
   {{- end }}
   {{- if .Values.auth.jwt }}
-  jwt:{{ .Values.auth.jwt | toYaml | nindent 2 }}
+  jwt: {{- toYaml .Values.auth.jwt | nindent 2 }}
   {{- end }}
 
   {{- if .Values.storageClass.enabled }}
@@ -68,24 +68,24 @@ spec:
   {{- end }}
 
   {{- if .Values.volumeClaimTemplates }}
-  volumeClaimTemplates: {{ .Values.volumeClaimTemplates | toYaml | nindent 2 }}
+  volumeClaimTemplates: {{- toYaml .Values.volumeClaimTemplates | nindent 2 }}
   {{- end }}
 
   {{- if .Values.externalVolumes }}
-  externalVolumes: {{ .Values.externalVolumes | toYaml | nindent 2 }}
+  externalVolumes: {{- toYaml .Values.externalVolumes | nindent 2 }}
   {{- end }}
 
   {{- if .Values.externalVolumeMounts }}
-  externalVolumeMounts: {{ .Values.externalVolumeMounts | toYaml | nindent 2 }}
+  externalVolumeMounts: {{- toYaml .Values.externalVolumeMounts | nindent 2 }}
   {{- end }}
 
   {{- if .Values.podSecurityContext }}
-  securityContext: {{ .Values.podSecurityContext | toYaml | nindent 2 }}
+  securityContext: {{- toYaml .Values.podSecurityContext | nindent 2 }}
   {{- end }}
   {{- if .Values.securityContext }}
-  containerSecurityContext: {{ .Values.securityContext | toYaml | nindent 2 }}
+  containerSecurityContext: {{- toYaml .Values.securityContext | nindent 2 }}
   {{- end }}
 
   {{- if .Values.services }}
-  services: {{ .Values.services | toYaml | nindent 2 }}
+  services: {{- toYaml .Values.services | nindent 2 }}
   {{- end }}
