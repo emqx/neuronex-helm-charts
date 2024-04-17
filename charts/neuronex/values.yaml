@@ -57,6 +57,8 @@ storageClass:
     - ReadWriteOnce
   size: 256Mi
 
+volumeClaimTemplates: []
+
 # Additional volumes.
 externalVolumes: []
 # - name: foo

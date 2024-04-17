@@ -67,6 +67,18 @@ spec:
   {{- end }}
   {{- end }}
 
+  {{- if .Values.volumeClaimTemplates }}
+  volumeClaimTemplates: {{ .Values.volumeClaimTemplates | toYaml | nindent 2 }}
+  {{- end }}
+
+  {{- if .Values.externalVolumes }}
+  externalVolumes: {{ .Values.externalVolumes | toYaml | nindent 2 }}
+  {{- end }}
+
+  {{- if .Values.externalVolumeMounts }}
+  externalVolumeMounts: {{ .Values.externalVolumeMounts | toYaml | nindent 2 }}
+  {{- end }}
+
   {{- if .Values.podSecurityContext }}
   securityContext: {{ .Values.podSecurityContext | toYaml | nindent 2 }}
   {{- end }}
