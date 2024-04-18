@@ -15,7 +15,7 @@ spec:
   env: {{- toYaml .Values.env | nindent 2 }}
   {{- end }}
   {{- if .Values.resources }}
-  resources: {{-  toYaml .Values.resources | nindent 2 }}
+  resources: {{-  toYaml .Values.resources | nindent 4 }}
   {{- end }}
   {{- if .Values.initContainers }}
   initContainers: {{- toYaml .Values.initContainers | nindent 2 }}
@@ -24,13 +24,13 @@ spec:
   externalInitContainers: {{- toYaml .Values.externalInitContainers | nindent 2 }}
   {{- end }}
   {{- if .Values.affinity }}
-  affinity: {{- toYaml  .Values.affinity | nindent 2 }}
+  affinity: {{- toYaml .Values.affinity | nindent 4 }}
   {{- end }}
   {{- if .Values.tolerations }}
-  tolerations: {{- toYaml  .Values.tolerations | nindent 2 }}
+  tolerations: {{- toYaml .Values.tolerations | nindent 2 }}
   {{- end }}
   {{- if .Values.nodeSelector }}
-  nodeSelector: {{- toYaml  .Values.nodeSelector | nindent 2 }}
+  nodeSelector: {{- toYaml .Values.nodeSelector | nindent 4 }}
   {{- end }}
   {{- if .Values.nodeName }}
   nodeName: {{ .Values.nodeName }}
@@ -80,10 +80,10 @@ spec:
   {{- end }}
 
   {{- if .Values.podSecurityContext }}
-  securityContext: {{- toYaml .Values.podSecurityContext | nindent 2 }}
+  securityContext: {{- toYaml .Values.podSecurityContext | nindent 4 }}
   {{- end }}
   {{- if .Values.securityContext }}
-  containerSecurityContext: {{- toYaml .Values.securityContext | nindent 2 }}
+  containerSecurityContext: {{- toYaml .Values.securityContext | nindent 4 }}
   {{- end }}
 
   {{- if .Values.services }}
