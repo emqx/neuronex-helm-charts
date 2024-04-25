@@ -8,8 +8,8 @@ controllerManager:
         drop:
         - ALL
     image:
-      repository: g1eny0ung/neuronex-operator
-      tag: 0.1.0-rc.1
+      repository: emqx/neuronex-operator
+      tag: 0.1.0-rc.3
     imagePullPolicy: IfNotPresent
     resources:
       limits:
