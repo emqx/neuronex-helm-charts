@@ -5,7 +5,7 @@ Helm charts for NeuronEX Operator & NeuronEX.
 ## Overview
 
 The main purpose of this repository is to provide a simple way to deploy NeuronEX on Kubernetes.
-After deploying NeuronEX Operator, you can use this chart to deploy NeuronEX instances.
+After deploying NeuronEX Operator, you can also use this chart to deploy NeuronEX instances.
 
 ## Usage
 
@@ -42,3 +42,7 @@ To uninstall charts:
 helm delete neuronex -n neuronex
 helm delete neuronex-operator -n neuronex-op
 ```
+
+## Values
+
+For more information on values, please refer to the chart READMEs.

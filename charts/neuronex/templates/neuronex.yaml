@@ -20,8 +20,8 @@ spec:
   {{- if .Values.initContainers }}
   initContainers: {{- toYaml .Values.initContainers | nindent 2 }}
   {{- end }}
-  {{- if .Values.externalInitContainers }}
-  externalInitContainers: {{- toYaml .Values.externalInitContainers | nindent 2 }}
+  {{- if .Values.externalContainers }}
+  externalContainers: {{- toYaml .Values.externalContainers | nindent 2 }}
   {{- end }}
   {{- if .Values.affinity }}
   affinity: {{- toYaml .Values.affinity | nindent 4 }}
