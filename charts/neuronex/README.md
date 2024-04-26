@@ -1,6 +1,8 @@
 # NeuronEX Chart
 
-A Helm chart for NeuronEX.
+Helm chart for NeuronEX.
+
+This chart must be used with [NeuronEX Operator](../neuronex-operator/README.md).
 
 ## Values Explanation
 
