@@ -43,6 +43,16 @@ entries:
     version: 0.1.0
   neuronex-operator:
   - apiVersion: v2
+    appVersion: 0.1.6
+    created: "2024-04-30T04:00:59.819261327Z"
+    description: A Helm chart for NeuronEX Operator
+    digest: 19ae74cf9159ea6a7a7bb356a56e7234cef2b4a4285874ef85128fb6b361c0f3
+    name: neuronex-operator
+    type: application
+    urls:
+    - https://github.com/emqx/neuronex-helm-charts/releases/download/neuronex-operator-0.1.6/neuronex-operator-0.1.6.tgz
+    version: 0.1.6
+  - apiVersion: v2
     appVersion: 0.1.5
     created: "2024-04-25T08:52:00.858952248Z"
     description: A Helm chart for NeuronEX Operator
@@ -102,4 +112,4 @@ entries:
     urls:
     - https://github.com/emqx/neuronex-helm-charts/releases/download/neuronex-operator-0.1.0/neuronex-operator-0.1.0.tgz
     version: 0.1.0
-generated: "2024-04-25T08:52:00.858973748Z"
+generated: "2024-04-30T04:00:59.819298587Z"
