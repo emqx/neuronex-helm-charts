@@ -55,5 +55,5 @@ roleRef:
   name: '{{ include "neuronex-operator.fullname" . }}-leader-election-role'
 subjects:
 - kind: ServiceAccount
-  name: '{{ include "neuronex-operator.fullname" . }}-controller-manager'
+  name: '{{ include "neuronex-operator.fullname" . }}'
   namespace: '{{ .Release.Namespace }}'
