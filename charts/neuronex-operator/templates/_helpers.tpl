@@ -24,6 +24,17 @@ If release name contains chart name it will be used as a full name.
 {{- end }}
 
 {{/*
+Namespace for sub resources.
+*/}}
+{{- define "neuronex-operator.namespace" -}}
+{{- if .Values.namespaceOverride }}
+{{- .Values.namespaceOverride }}
+{{- else }}
+{{- .Release.Namespace }}
+{{- end }}
+{{- end }}
+
+{{/*
 Create chart name and version as used by the chart label.
 */}}
 {{- define "neuronex-operator.chart" -}}
